@@ -25,12 +25,11 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
-// import { CreateAccountDrawer } from "@/components/create-account-drawer";
+import { CreateAccountDrawer } from "@/components/create-account-drawer";
 import { cn } from "@/lib/utils";
 import { createTransaction, updateTransaction } from "@/actions/transaction";
 import { transactionSchema } from "@/app/lib/schema";
 import { ReceiptScanner } from "./recipt-scanner";
-import CreateAccountDrawer from "@/components/create-account-drawer";
 
 export function AddTransactionForm({
   accounts,
@@ -305,7 +304,7 @@ export function AddTransactionForm({
         </div>
       )}
 
-      {/* Actions
+      {/* Actions */}
       <div className="flex gap-4">
         <Button
           type="button"
@@ -327,35 +326,7 @@ export function AddTransactionForm({
             "Create Transaction"
           )}
         </Button>
-      </div> */}
-      {/* Actions */}
-<div className="flex justify-end flex-wrap gap-4 pt-4">
-  <Button
-    type="button"
-    variant="outline"
-    className="min-w-[120px]"
-    onClick={() => router.back()}
-  >
-    Cancel
-  </Button>
-  <Button
-    type="submit"
-    className="min-w-[160px]"
-    disabled={transactionLoading}
-  >
-    {transactionLoading ? (
-      <>
-        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-        {editMode ? "Updating..." : "Creating..."}
-      </>
-    ) : editMode ? (
-      "Update Transaction"
-    ) : (
-      "Create Transaction"
-    )}
-  </Button>
-</div>
-
+      </div>
     </form>
   );
 }

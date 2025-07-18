@@ -1,31 +1,40 @@
-import HeroSection from "@/components/hero";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { featuresData, howItWorksData, statsData, testimonialsData } from "@/data/landing";
 import Image from "next/image";
+import {
+  featuresData,
+  howItWorksData,
+  statsData,
+  testimonialsData,
+} from "@/data/landing";
+import HeroSection from "@/components/hero";
 import Link from "next/link";
 
-export default function Home() {
+const LandingPage = () => {
   return (
-    <div className="mt-40">
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
       <HeroSection />
+
+      {/* Stats Section */}
       <section className="py-20 bg-blue-50">
-        <div className="container mx-auto py-4"> 
+        <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {statsData.map((statsData, index)=>(
-              <div key={index} className="text-center"> 
-              <div className="text-4xl font-bold text-blue-600 mb-2">
-                {statsData.value}
+            {statsData.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-4xl font-bold text-blue-600 mb-2">
+                  {stat.value}
                 </div>
-              <div className="text-gray-600">
-                {statsData.label}
-                </div>
+                <div className="text-gray-600">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
-       <section id="features" className="py-20">
+
+      {/* Features Section */}
+      <section id="features" className="py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
             Everything you need to manage your finances
@@ -43,6 +52,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* How It Works Section */}
       <section className="py-20 bg-blue-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-16">How It Works</h2>
@@ -60,7 +71,8 @@ export default function Home() {
         </div>
       </section>
 
-       <section id="testimonials" className="py-20">
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-16">
             What Our Users Say
@@ -90,29 +102,10 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section> 
+      </section>
 
-
-  <section className="group py-20 bg-gradient-to-r from-blue-100 via-purple-100 to-blue-100 hover:from-blue-200 hover:via-purple-200 hover:to-blue-200 transition-all duration-500">
-  <div className="container mx-auto px-4 text-center">
-    <h2 className="text-3xl font-bold text-blue-900 mb-4 group-hover:text-purple-900 transition-colors duration-300">
-      Ready to Take Control of Your Finances?
-    </h2>
-    <p className="text-blue-700 mb-8 max-w-2xl mx-auto group-hover:text-purple-700 transition-colors duration-300">
-      Join thousands of users who are already managing their finances smarter with Welth
-    </p>
-    <Link href="/dashboard">
-      <Button
-        size="lg"
-        className="bg-white text-blue-600 hover:bg-blue-100 animate-bounce"
-      >
-        Start Free Trial
-      </Button>
-    </Link>
-  </div>
-</section>
-
-{/* <section className="py-20 bg-blue-600">
+      {/* CTA Section */}
+      <section className="py-20 bg-blue-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
             Ready to Take Control of Your Finances?
@@ -130,9 +123,9 @@ export default function Home() {
             </Button>
           </Link>
         </div>
-      </section> */}
-
-
+      </section>
     </div>
   );
 };
+
+export default LandingPage;
